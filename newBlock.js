@@ -9,5 +9,5 @@ web3.eth.subscribe('newBlockHeaders', (error, result) => {
 		console.log('error', error);
 	}
 }).on('data', function (transaction) {
-	console.log('tx', transaction);
+	console.log('block: ', transaction);
 })
