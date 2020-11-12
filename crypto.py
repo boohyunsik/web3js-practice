@@ -30,3 +30,21 @@ print("signature : ", hex(signature))
 
 hashFromSignature = pow(signature, keyPair.e, keyPair.n)
 print("hashFromSignature", hashFromSignature)
+
+
+/////////////
+
+from ecies.utils import generate_key
+from ecies import encrypt, decrypt
+
+secret_key = generate_key()
+sk_bytes = secret_key.secret
+pk_bytes = secret_key.public_key.format(True)
+
+message = b"test"
+
+encrypted_message = encrypt(pk_bytes, message)
+print(encrypted_message)
+
+decrypted_message = decrypt(sk_bytes, encrypted_message)
+print(decrypted_message)
